@@ -1,26 +1,28 @@
 import React from 'react'
 
-function Footer() {
+function Footer({count, onChange, filter, clearCompleted}) {
   return (
     <footer className="footer">
 		<span className="todo-count">
-			<strong>2 </strong>
+			<strong>{count} </strong>
 			left
 		</span>
 
 		<ul className="filters">
-			<li>
-				<a href="#/" className="selected">All</a>
+			<li onClick={()=> onChange('all')}>
+				<a href="#/" className={filter === 'all' ? 'selected' : ''}>All</a>
 			</li>
-			<li>
-				<a href="#/" className="selected">Active</a>
+			<li onClick={()=> onChange('active')}>
+				<a href="#/" className={filter === 'active' ? 'selected' : ''}>Active</a>
 			</li>
-			<li>
-				<a href="#/" className="selected">Completed</a>
+			<li onClick={()=> onChange('completed')}>
+				<a href="#/" className={filter === 'completed' ? 'selected' : ''}>
+					Completed
+			    </a>
 			</li>
 		</ul>
 
-		<button className="clear-completed">
+		<button className="clear-completed" onClick={clearCompleted}>
 			Clear completed
 		</button>
 	</footer>
